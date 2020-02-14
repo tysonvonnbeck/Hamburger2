@@ -3,14 +3,8 @@ var express = require("express");
 var router = express.Router();
 // var db = require("../models");
 var db= require("../models")
-console.log(db.Burger);
+// console.log(db.Burger);
 
-
-
-// Import the model (burger.js) to use its database functions.
-// var burger = require("../models/burger.js");
-
-// Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
   db.Burger.findAll().then(function (data) {
     var result=[]
@@ -48,7 +42,6 @@ console.log(req.body.eaten );
     {where:{id: req.params.id}}
   ).then( function (result) {
     if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
